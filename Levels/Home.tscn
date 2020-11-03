@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Prefabs/tiles/default.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/tiles/stairs.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/tiles/wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Mannequiny.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/PlayerCam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Spatial.gd" type="Script" id=6]
+[ext_resource path="res://test.meshlib" type="MeshLibrary" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.683013, 0.258819, -0.683013, 0.19506, 0.836516, 0.512047, 0.703879, -0.482963, 0.520866, -5, 8, 8 )
+
+[node name="tiles" type="Spatial" parent="."]
+
+[node name="tile2" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0 )
+
+[node name="tile20" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0 )
+
+[node name="Spatial" parent="tiles" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4, -1, 0 )
+
+[node name="tile5" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 2 )
+
+[node name="tile8" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 4 )
+
+[node name="tile9" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 4 )
+
+[node name="tile10" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 6 )
+
+[node name="tile19" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, 6 )
+
+[node name="tile22" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 6 )
+
+[node name="tile23" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 4 )
+
+[node name="tile24" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 2 )
+
+[node name="tile11" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 6 )
+
+[node name="tile13" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 6 )
+
+[node name="tile14" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4 )
+
+[node name="tile15" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2 )
+
+[node name="tile16" parent="tiles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="tile4" parent="tiles" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2 )
+
+[node name="tile21" parent="tiles" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2 )
+
+[node name="tile17" parent="tiles" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+
+[node name="tile18" parent="tiles" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4 )
+
+[node name="Camera" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55738, 9.72658, 3.64497 )
+
+[node name="AMap" type="Spatial" parent="."]
+script = ExtResource( 6 )
+
+[node name="Mannequiny" parent="AMap" instance=ExtResource( 4 )]
+
+[node name="GridMap" type="GridMap" parent="AMap"]
+visible = false
+mesh_library = ExtResource( 7 )
+cell_size = Vector3( 2, 0.001, 2 )
+cell_scale = 2.0
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, 0 )
+}

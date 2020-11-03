@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/Camera.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Camera3D.gd" type="Script" id=2]
+
+[sub_resource type="ProceduralSky" id=29]
+
+[sub_resource type="Environment" id=30]
+background_mode = 2
+background_sky = SubResource( 29 )
+ambient_light_color = Color( 0.866667, 0.847059, 0.341176, 1 )
+
+[node name="Camera" type="Spatial"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.788011, 0.435338, -0.435338, 0, 0.707107, 0.707107, 0.615662, -0.557208, 0.557208, -5.26915, 20, 21.1347 )
+environment = SubResource( 30 )
+projection = 1
+size = 12.0
+far = 150.0
+script = ExtResource( 2 )
