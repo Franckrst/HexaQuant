@@ -8,7 +8,6 @@
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 1 )
-ss_reflections_enabled = true
 ss_reflections_fade_in = 0.878451
 ss_reflections_fade_out = 0.392292
 

@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Prefabs/tiles/default.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/tiles/stairs.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/tiles/wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Mannequiny.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/Camera3D.gd" type="Script" id=5]
 [ext_resource path="res://Levels/Spatial.gd" type="Script" id=6]
-[ext_resource path="res://test.meshlib" type="MeshLibrary" id=7]
 [ext_resource path="res://Prefabs/Camera.gd" type="Script" id=8]
 
 [sub_resource type="ProceduralSky" id=1]
@@ -14,7 +12,6 @@
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 1 )
-ss_reflections_enabled = true
 ss_reflections_fade_in = 0.878451
 ss_reflections_fade_out = 0.392292
 
@@ -88,34 +85,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4 )
 
 [node name="Camera" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55738, 9.72658, 3.64497 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Camera" type="Camera" parent="Camera"]
-transform = Transform( 0.788011, 0.435338, -0.435338, 0, 0.707107, 0.707107, 0.615662, -0.557208, 0.557208, -5.26915, 20, 21.1347 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96007e-07, 0, 30 )
 environment = SubResource( 2 )
 projection = 1
 size = 12.0
 far = 150.0
-script = ExtResource( 5 )
 
 [node name="AMap" type="Spatial" parent="."]
 script = ExtResource( 6 )
 
 [node name="Mannequiny" parent="AMap" instance=ExtResource( 4 )]
-
-[node name="GridMap" type="GridMap" parent="AMap"]
-visible = false
-mesh_library = ExtResource( 7 )
-cell_size = Vector3( 2, 0.001, 2 )
-cell_scale = 2.0
-data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 2, 0 )
-}

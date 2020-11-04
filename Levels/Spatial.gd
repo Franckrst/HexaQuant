@@ -34,7 +34,6 @@ var astarSimple = null
 var all_points = {}
 var astarIntance = null
 var mapTilesInd = []
-onready var gridmap = $GridMap
 func _ready():
 	astarIntance = AStar.new()
 	var lineIndex = 0
@@ -45,7 +44,6 @@ func _ready():
 			var ind = astarIntance.get_available_point_id()
 			astarIntance.add_point(ind, Vector3(colIndex*2, 0, lineIndex*2)) # pourquoi gridMap ?
 			mapTilesInd[lineIndex].push_back(ind)
-			print(str(map[lineIndex][colIndex]))
 			colIndex += 1
 		lineIndex += 1
 		
@@ -72,9 +70,6 @@ func get_path_astart(start, end):
 		end[0] = end[0]*-1
 	if end[2] < 0:
 		end[2] = end[2]*-1
-	print("Start: "+str(round(start[2])/2)+","+str(round(start[0])/2))
-	print("End: "+str(round(end[2])/2)+","+str(round(end[0])/2))
 	var endTile = mapTilesInd[round(end[2])/2][round(end[0])/2]
 	var startTile = mapTilesInd[round(start[2])/2][round(start[0])/2]
-	print("start => "+str(start)+str(startTile)+" | end => "+str(end)+str(endTile))
 	return astarIntance.get_point_path(startTile, endTile)
