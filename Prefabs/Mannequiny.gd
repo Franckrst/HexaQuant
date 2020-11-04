@@ -13,8 +13,18 @@ func _physics_process(delta):
 		if Vector2(move_vec.x,move_vec.z).length() < 0.1:
 			path_ind += 1
 		else:
-			move_vec[1] = 0;
-			move_and_slide_with_snap(move_vec.normalized() * move_speed, Vector3(0, -1, 0),Vector3(0, 1, 0))
+			if $RayCast.is_colliding():
+				move_vec[1] = 0;
+			var toto = move_vec.normalized()*move_speed
+			#move_and_slide_with_snap(move_vec.normalized()*move_speed,Vector3.DOWN,Vector3.DOWN,true)
+			move_and_slide(move_vec.normalized()*move_speed,Vector3.UP,true)
+			print(str(rad2deg(Vector3.BACK.angle_to(toto))))
+			self.set_rotation(Vector3(0,atan2(toto.x, toto.z),0))
+			$AnimationPlayer.play("run")
+			print(str(self.get_rotation()))
+	else:
+		$AnimationPlayer.stop()
+#move_and_slide_with_snap(move_vec.normalized() * move_speed, Vector3(0, -1, 0),Vector3(0, 1, 0))
 
 func move_to(target_pos):
 	print("-------+->"+str(global_transform.origin))

@@ -9,25 +9,24 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.129412, 0.129412, 0.129412, 1 )
-metallic = 0.25
+metallic_specular = 0.0
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+albedo_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+metallic_specular = 0.0
+roughness = 0.86
 
 [node name="tile" type="StaticBody"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="hover" type="MeshInstance" parent="."]
-transform = Transform( 0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 1, 0.01, 1 )
-visible = false
+transform = Transform( 0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, 0.01, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 4 )
